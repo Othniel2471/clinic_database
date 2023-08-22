@@ -82,3 +82,10 @@ create index med_treatment_idx on treatments(id);
 
 create index med_history_treatment_idx on medical_histories_treatment(medical_history_id);
 
+create index medhist_idx on medical_histories (patient_id);
+
+create index inv_med_idx on invoices (medical_history_id);
+
+create index item_inv_idx on invoice_items (invoice_id);
+
+create index item_treat_idx on invoice_items (treatment_id);
