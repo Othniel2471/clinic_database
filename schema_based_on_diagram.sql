@@ -62,3 +62,12 @@ add constraint invoices_fk
 ALTER TABLE medical_histories
 ADD CONSTRAINT fk_medical_histories_treatments
 FOREIGN KEY (id) REFERENCES treatments(id);
+
+CREATE TABLE medical_histories_treatment (
+    medical_history_id INT NOT NULL,
+    treatment_id INT NOT NULL,
+    CONSTRAINT fk_medical_history FOREIGN KEY(medical_history_id) REFERENCES medical_histories(id),
+    CONSTRAINT fk_treatment FOREIGN KEY(treatment_id) REFERENCES treatments(id)
+);
+
+CREATE INDEX patients_idx ON medical_histories (patient_id);
