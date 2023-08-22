@@ -71,3 +71,11 @@ CREATE TABLE medical_histories_treatment (
 );
 
 CREATE INDEX patients_idx ON medical_histories (patient_id);
+
+create index invoices_idx on invoices(id);
+
+create index medical_histories_idx on medical_histories(id);
+
+create index treatments_index on treatments(id);
+
+create index med_treatment_idx on treatments(id);
