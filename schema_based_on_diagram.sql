@@ -24,3 +24,41 @@ ADD CONSTRAINT treatments_pk PRIMARY KEY (id);
 
 ALTER TABLE medical_histories
 ADD CONSTRAINT medical_histories_fk FOREIGN KEY (patient_id) REFERENCES patients (id);
+
+create table invoices (
+  id int generated always as identity,
+  total_amount decimal(10,2) not null,
+  generated_at TIMESTAMP,
+  payed_At timestamp,
+  medical_history_id int
+);
+
+alter table invoices
+  add constraint invoices_pk
+    primary key (id);
+
+create table invoice_items (
+  id int generated always as identity,
+  unit_price decimal(10,2) not null,
+  quantity int not null,
+  total_price decimal(10,2) not null,
+  invoice_id int not null,
+  treatment_id int not null,
+  primary key (id)
+);
+
+alter table invoice_items
+add constraint invoices_fk
+  foreign key (invoice_id) references invoices (id);
+
+alter table invoice_items
+add constraint invoice_items_fk
+  foreign key (treatment_id) references treatments (id);
+
+alter table invoices
+add constraint invoices_fk
+  foreign key (medical_history_id) references medical_histories (id);
+
+ALTER TABLE medical_histories
+ADD CONSTRAINT fk_medical_histories_treatments
+FOREIGN KEY (id) REFERENCES treatments(id);
