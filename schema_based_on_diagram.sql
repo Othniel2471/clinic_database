@@ -79,3 +79,6 @@ create index medical_histories_idx on medical_histories(id);
 create index treatments_index on treatments(id);
 
 create index med_treatment_idx on treatments(id);
+
+create index med_history_treatment_idx on medical_histories_treatment(medical_history_id);
+
